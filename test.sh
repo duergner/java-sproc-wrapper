@@ -26,7 +26,7 @@ done
 sleep 5
 
 echo 'Running tests..'
-mvn clean verify -Pintegration-test
+./mvnw clean verify -Pintegration-test
 
 echo 'Stopping PostgreSQL instance..'
 docker stop postgres
