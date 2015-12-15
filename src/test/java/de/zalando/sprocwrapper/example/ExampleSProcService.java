@@ -163,6 +163,9 @@ public interface ExampleSProcService {
     ExampleDomainObjectWithEnum getEntityWithEnum(@SProcParam long id);
 
     @SProcCall
+    List<ExampleDomainObjectWithMultipleEnums> getEntitiesWithEnum(@SProcParam long id);
+
+    @SProcCall
     ExampleDomainObjectWithGlobalTransformer testGlobalTransformer(
             @SProcParam ExampleDomainObjectWithGlobalTransformer exampleDomainObjectWithGlobalTransformer);
 

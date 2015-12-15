@@ -28,6 +28,7 @@ done
 sleep 5
 
 echo 'Running tests..'
+export MAVEN_OPTS="-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
 ./mvnw clean verify -Pintegration-test
 
 echo 'Stopping PostgreSQL instance..'

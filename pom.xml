@@ -285,6 +285,7 @@
                                     <sqlCommand>
                                         DROP EXTENSION IF EXISTS hstore CASCADE;
                                         CREATE EXTENSION hstore;
+                                        DROP SCHEMA IF EXISTS ztest_schema0 CASCADE;
                                         DROP SCHEMA IF EXISTS ztest_schema1 CASCADE;
                                         DROP SCHEMA IF EXISTS ztest_schema2 CASCADE;
                                     </sqlCommand>

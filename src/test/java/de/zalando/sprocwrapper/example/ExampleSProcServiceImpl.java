@@ -266,6 +266,11 @@ public class ExampleSProcServiceImpl extends AbstractSProcService<ExampleSProcSe
     }
 
     @Override
+    public List<ExampleDomainObjectWithMultipleEnums> getEntitiesWithEnum(@SProcParam long id) {
+        return sproc.getEntitiesWithEnum(id);
+    }
+
+    @Override
     public ExampleDomainObjectWithGlobalTransformer testGlobalTransformer(
             final ExampleDomainObjectWithGlobalTransformer exampleDomainObjectWithGlobalTransformer) {
         return sproc.testGlobalTransformer(exampleDomainObjectWithGlobalTransformer);

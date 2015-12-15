@@ -27,6 +27,7 @@ import javax.sql.DataSource;
 
 import javax.validation.ConstraintViolationException;
 
+import de.zalando.sprocwrapper.example.*;
 import org.joda.time.DateTime;
 
 import org.junit.Assert;
@@ -45,38 +46,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import de.zalando.sprocwrapper.example.AddressPojo;
-import de.zalando.sprocwrapper.example.Example1DomainObject1;
-import de.zalando.sprocwrapper.example.Example1DomainObject2;
-import de.zalando.sprocwrapper.example.Example2DomainObject1;
-import de.zalando.sprocwrapper.example.Example2DomainObject2;
-import de.zalando.sprocwrapper.example.ExampleDomainObject;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithDate;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithEmbed;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithEnum;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithGlobalTransformer;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithInnerObject;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithMap;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithRandomFields;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithRandomFieldsInner;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithRandomFieldsOverride;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithSimpleTransformer;
-import de.zalando.sprocwrapper.example.ExampleDomainObjectWithValidation;
-import de.zalando.sprocwrapper.example.ExampleEnum;
-import de.zalando.sprocwrapper.example.ExampleNamespacedSProcService;
-import de.zalando.sprocwrapper.example.ExampleSProcService;
-import de.zalando.sprocwrapper.example.ExampleValidationSProcService;
-import de.zalando.sprocwrapper.example.GlobalTransformedObject;
-import de.zalando.sprocwrapper.example.LookupType;
-import de.zalando.sprocwrapper.example.LookupTypeSchema;
-import de.zalando.sprocwrapper.example.OptionalLookupType;
-import de.zalando.sprocwrapper.example.Order;
-import de.zalando.sprocwrapper.example.OrderMonetaryAmountImpl;
-import de.zalando.sprocwrapper.example.OrderPosition;
-import de.zalando.sprocwrapper.example.TestInheritanceChild;
-import de.zalando.sprocwrapper.example.WrapperLookupSchema;
-import de.zalando.sprocwrapper.example.WrapperOptionalLookupType;
 
 import de.zalando.typemapper.parser.DateTimeUtil;
 
@@ -390,6 +359,16 @@ public class SimpleIT {
         Assert.assertNotNull(obj);
         Assert.assertEquals("sample x", obj.getX());
         Assert.assertEquals(ExampleEnum.ENUM_CONST_1, obj.getMyEnum());
+    }
+
+    @Test
+    public void testReturnDomainObjectsWithEnum() {
+        final List<ExampleDomainObjectWithMultipleEnums> objs = exampleSProcService.getEntitiesWithEnum(1L);
+        ExampleDomainObjectWithMultipleEnums obj = objs.get(0);
+        Assert.assertNotNull(obj);
+        Assert.assertEquals(ExampleEnum.ENUM_CONST_1, obj.getMyEnum());
+        Assert.assertEquals(ExampleOtherEnum.ENUM_VAL1, obj.getMyOtherEnum());
+        Assert.assertEquals(ExampleOtherEnum.ENUM_VAL2, obj.getExampleOtherEnum());
     }
 
     @Test
