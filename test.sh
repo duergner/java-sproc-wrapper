@@ -11,11 +11,13 @@ export PGUSER=postgres
 export PGPASSWORD=postgres
 export PGDATABASE=local_zmon_db
 
-container=$(docker ps | grep postgres:9.3.5)
+PGVERSION=9.4.5
+
+container=$(docker ps | grep postgres:$PGVERSION)
 if [ -z "$container" ]; then
     docker rm postgres
     echo 'Starting PostgreSQL instance..'
-    docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres:9.3.5
+    docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres:$PGVERSION
 fi
 
 until nc -w 5 -z localhost 5432; do
