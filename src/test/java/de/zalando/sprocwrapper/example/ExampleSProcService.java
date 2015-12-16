@@ -52,6 +52,9 @@ public interface ExampleSProcService {
     void useEnumParam(@SProcParam ExampleEnum enumParameter);
 
     @SProcCall
+    List<ExampleDomainObjectWithMultipleEnums> useEnumParamInDifferentSchema(@SProcParam ExampleOtherEnum enumParameter, @SProcParam List<Integer> someInts);
+
+    @SProcCall
     void useDateParam(@SProcParam Date d);
 
     @SProcCall

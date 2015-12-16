@@ -354,6 +354,11 @@ public class SimpleIT {
     }
 
     @Test
+    public void testEnumInDifferentEnum() {
+        exampleSProcService.useEnumParamInDifferentSchema(ExampleOtherEnum.ENUM_VAL1, Lists.<Integer>newArrayList());
+    }
+
+    @Test
     public void testReturnDomainObjectWithEnum() {
         final ExampleDomainObjectWithEnum obj = exampleSProcService.getEntityWithEnum(1L);
         Assert.assertNotNull(obj);

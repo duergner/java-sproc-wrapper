@@ -92,6 +92,11 @@ public class ExampleSProcServiceImpl extends AbstractSProcService<ExampleSProcSe
     }
 
     @Override
+    public List<ExampleDomainObjectWithMultipleEnums> useEnumParamInDifferentSchema(final ExampleOtherEnum param, List<Integer> someInts) {
+        return sproc.useEnumParamInDifferentSchema(param, someInts);
+    }
+
+    @Override
     public void useCharParam(final char c) {
         sproc.useCharParam(c);
     }
