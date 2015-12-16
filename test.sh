@@ -6,11 +6,6 @@ if nc -w 5 -z localhost 5432; then
     exit 1
 fi
 
-export PGHOST=localhost
-export PGUSER=postgres
-export PGPASSWORD=postgres
-export PGDATABASE=local_zmon_db
-
 PGVERSION=9.4.5
 
 container=$(docker ps | grep postgres:$PGVERSION)
