@@ -93,6 +93,16 @@ public class SimpleIT {
     }
 
     @Test
+    public void testSimpleTransformerList() throws SQLException {
+
+        // test complex result
+        final List<ExampleDomainObjectWithSimpleTransformer> transformed = exampleSProcService.testSimpleTransformerList();
+
+        assertEquals("321", transformed.get(0).getA());
+        assertEquals("ollah", transformed.get(0).getB());
+    }
+
+    @Test
     public void testMicroSecondTimestamp() throws SQLException {
         java.sql.Timestamp t = exampleSProcService.getMicorsecondTimestamp();
         assertEquals(t.getNanos(), 123456000);
